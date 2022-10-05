@@ -107,5 +107,11 @@ int main()
     video_reader_close(&vr_state);
     glfwTerminate();
 
+#ifdef _MSC_VER
+    _aligned_free(frame_data);
+#else
+    aligned_free(frame_data);
+#endif
+
     return 0;
 }
